@@ -23,8 +23,11 @@ router.get('/caiji', function(req, res, next) {
     console.log('start:')
     function openLink(urlLink) {
         if(nowUrl.length>=bingfa){
+            if(waitUrl.indexOf(urlLink)>-1){
+                return
+            }
             waitUrl.push(urlLink)
-            console.log('加入等待')
+            console.log('加入等待'+waitUrl.length)
             return
         }
         allUrl.push(urlLink);
