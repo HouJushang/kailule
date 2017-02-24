@@ -7,4 +7,6 @@ var articleSchema = new mongoose.Schema({
     time: String,
     addTime: {type: Date, default: Date.now}
 });
-module.exports = require('../util/database').model('article', articleSchema);
+module.exports = function(dbname){
+    return require('../util/database')(dbname).model('article', articleSchema);
+}
