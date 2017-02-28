@@ -1,12 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var article = require('../dbModel/article');
+var web = require('../dbModel/web');
 
-/* GET home page. */
 
-router.get('/',function(req,res,next){
-
-    var webType = req.headers.host;
+router.post('/web',function(req,res,next){
 
     // var resPromise = new Promise(function(resolve, reject){
     //     article(webType.split('.')[0]).find().exec(function(err,result){
@@ -22,6 +19,8 @@ router.get('/',function(req,res,next){
     //         res.render('index', {detail: result});
     //     }
     // })
+
+    var webType = req.headers.host;
     res.json({
         name: 111
     })

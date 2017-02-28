@@ -2,7 +2,7 @@
 	<el-row class="container">
 		<el-col :span="24" class="header">
 			<el-col :span="20" class="logo">
-				<img src="../assets/logo4.png" /> <span>VUE<i class="txt">ADMIN</i></span>
+				<img src="../assets/logo4.png" /> <span>开撸了<i class="txt">后台管理系统</i></span>
 			</el-col>
 			<el-col :span="4" class="userinfo">
 				<el-dropdown trigger="click">

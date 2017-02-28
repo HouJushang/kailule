@@ -9,11 +9,18 @@ import Page4 from './pages/nav2/Page4.vue'
 import Page5 from './pages/nav2/Page5.vue'
 import Page6 from './pages/nav3/Page6.vue'
 import echarts from './pages/charts/echarts.vue'
+import Web from './pages/Web.vue'
 
 let routes = [
     {
         path: '/login',
         component: Login,
+        name: '',
+        hidden: true
+    },
+    {
+        path: '/web',
+        component: Web,
         name: '',
         hidden: true
     },
@@ -29,7 +36,8 @@ let routes = [
         name: '文章管理',
         iconCls: 'el-icon-message',//图标样式class
         children: [
-            { path: '/main', component: Main, name: '。。。', hidden: true },
+            { path: '/user', component: user, name: '采集' },
+            { path: '/main', component: Main, name: '', hidden: true },
             { path: '/table', component: Table, name: '添加文章' },
             { path: '/form', component: Form, name: '文章列表' },
             { path: '/user', component: user, name: '标签管理' },
@@ -50,11 +58,21 @@ let routes = [
     {
         path: '/',
         component: Home,
-        name: '导航二',
+        name: '所有网站',
         iconCls: 'fa fa-id-card-o',
         children: [
-            { path: '/page4', component: Page4, name: '页面4' },
-            { path: '/page5', component: Page5, name: '页面5' }
+            { path: '/page4', component: Page4, name: '英雄联盟' },
+            { path: '/page5', component: Page5, name: '新闻' }
+        ]
+    },
+    {
+        path: '/',
+        component: Home,
+        name: '网站设置',
+        iconCls: 'fa fa-id-card-o',
+        children: [
+            { path: '/page4', component: Page4, name: '英雄联盟' },
+            { path: '/page5', component: Page5, name: '新闻' }
         ]
     },
     {
