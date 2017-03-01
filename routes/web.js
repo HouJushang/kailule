@@ -3,29 +3,36 @@ var router = express.Router();
 var web = require('../dbModel/web');
 
 
-router.post('/web',function(req,res,next){
-
-    // var resPromise = new Promise(function(resolve, reject){
-    //     article(webType.split('.')[0]).find().exec(function(err,result){
-    //         if(!err){
-    //             resolve(result)
-    //         }else{
-    //             reject(err)
-    //         }
-    //     })
-    // })
-    // resPromise.then(function(result){
-    //     if(result.length>0){
-    //         res.render('index', {detail: result});
-    //     }
-    // })
-
-    var webType = req.headers.host;
-    res.json({
-        name: 111
+router.post('/list',function(req,res,next){
+    web().find().exec(function(err,result){
+        if(!err){
+            res.json({
+                status: 'ok',
+                data: result
+            })
+        }else{
+            res.json({
+                status: 'fail',
+                err: err
+            })
+        }
     })
-
-
+})
+router.post('/add',function(req,res,next){
+    console.log(req.body);
+    web().create(req.body, function (err, result) {
+        if (err) {
+            res.json({
+                status: 'fail',
+                err: err
+            });
+        } else {
+            res.json({
+                status: 'ok',
+                data: result
+            });
+        }
+    })
 })
 
 module.exports = router;

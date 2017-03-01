@@ -9,7 +9,9 @@ import Page4 from './pages/nav2/Page4.vue'
 import Page5 from './pages/nav2/Page5.vue'
 import Page6 from './pages/nav3/Page6.vue'
 import echarts from './pages/charts/echarts.vue'
-import Web from './pages/Web.vue'
+import Web from './pages/web/Web.vue'
+import WebAdd from './pages/web/add.vue'
+
 
 let routes = [
     {
@@ -22,6 +24,12 @@ let routes = [
         path: '/web',
         component: Web,
         name: '',
+        hidden: true
+    },
+    {
+        path: '/webadd',
+        component: WebAdd,
+        name: 'webadd',
         hidden: true
     },
     {

@@ -1,12 +1,13 @@
 var mongoose = require("mongoose");
+mongoose.Promise = require('bluebird');
 var webSchema = new mongoose.Schema({
-    web: String,
+    name: String,
     path: String,
-    addTime: {type: Date, default: Date.now}
 });
 module.exports = function(dbname){
     if(!dbname){
         dbname = 'kll'
     }
+    console.log('dbname:'+dbname)
     return require('../util/database')(dbname).model('web', webSchema);
 }

@@ -25,7 +25,7 @@ app.use(require('node-compass')({mode: 'expanded'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/', web);
+app.use('/web', web);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

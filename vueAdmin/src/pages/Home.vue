@@ -2,7 +2,7 @@
 	<el-row class="container">
 		<el-col :span="24" class="header">
 			<el-col :span="20" class="logo">
-				<img src="../assets/logo4.png" /> <span>开撸了<i class="txt">后台管理系统</i></span>
+				<img src="../assets/logo4.png" /> <span>开撸了<i class="txt">后台管理系统</i></span>{{web}}
 			</el-col>
 			<el-col :span="4" class="userinfo">
 				<el-dropdown trigger="click">
@@ -50,11 +50,13 @@
 </template>
 
 <script>
+	import {web} from '../data.js'
 	export default {
 		data() {
 			return {
 				sysUserName: '',
 				sysUserAvatar: '',
+				web: web.val,
 				form: {
 					name: '',
 					region: '',
