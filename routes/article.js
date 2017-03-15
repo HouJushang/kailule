@@ -5,9 +5,9 @@ var article = require('../dbModel/article');
 /* GET home page. */
 
 router.get('/list',function(req,res,next){
-    var webType = req.headers.host;
+    var webType = req.headers.host.split('.')[0];
     var resPromise = new Promise(function(resolve, reject){
-        article(webType.split('.')[0]).find().exec(function(err,result){
+        article(webType).find().exec(function(err,result){
             if(!err){
                 resolve(result)
             }else{
@@ -16,11 +16,26 @@ router.get('/list',function(req,res,next){
         })
     })
     resPromise.then(function(result){
-        console.log(result)
         if (!result.length>0) {
             res.json({
                 status: 'fail',
                 err: result
+            });
+        } else {
+            res.json({
+                status: 'ok',
+                data: result
+            });
+        }
+    })
+})
+router.post('/add',function(req,res,next){
+    var webType = req.headers.host.split('.')[0];
+    article(webType).create(req.body, function (err, result) {
+        if (err) {
+            res.json({
+                status: 'fail',
+                err: err
             });
         } else {
             res.json({

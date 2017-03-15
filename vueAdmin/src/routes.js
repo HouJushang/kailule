@@ -2,10 +2,11 @@ import Login from './pages/Login.vue'
 import NotFound from './pages/404.vue'
 import Home from './pages/Home.vue'
 import Main from './pages/Main.vue'
-import List from './pages/article/List.vue'
+import listArticle from './pages/article/List.vue'
+import addArticle from './pages/article/Add.vue'
 
 import Table from './pages/nav1/Table.vue'
-// import Form from './pages/nav1/Form.vue'
+import Form from './pages/nav1/Form.vue'
 import user from './pages/nav1/user.vue'
 import Page4 from './pages/nav2/Page4.vue'
 import Page5 from './pages/nav2/Page5.vue'
@@ -48,8 +49,8 @@ let routes = [
         children: [
             { path: '/user', component: user, name: '采集' },
             { path: '/main', component: Main, name: '', hidden: true },
-            { path: '/table', component: Table, name: '添加文章' },
-            { path: '/list', component: List, name: '文章列表' },
+            { path: '/add', component: addArticle, name: '添加文章' },
+            { path: '/list', component: listArticle, name: '文章列表' },
             { path: '/user', component: user, name: '标签管理' },
         ]
     },

@@ -37,7 +37,7 @@
         },
         choose(e){
             web.current = e;
-            this.$router.push({ path: '/table' });
+            this.$router.push({ path: '/list' });
         }
     },
     mounted() {
