@@ -3,10 +3,7 @@
         <dd>
             主体网站
         </dd>
-        <dd v-for="item in web" @click="choose(item.path)">
-            {{item.name}}
-        </dd>
-        <dd v-for="item in web" @click="choose(item.path)">
+        <dd v-for="item in web" @click="choose(item)">
             {{item.name}}
         </dd>
         <dd>
@@ -16,7 +13,7 @@
 </template>
 
 <script>
-  import { postRequest } from '../../api/api';
+  import { getRequest } from '../../api/api';
   import { web } from '../../data'
   import NProgress from 'nprogress'
   export default {
@@ -29,8 +26,9 @@
         getList() {
             this.loading = true;
             NProgress.start();
-            postRequest({
-                url: 'web/list'
+            getRequest({
+                url: 'web/list',
+                www: true,
             }).then((res) => {
                 this.web = res;
                 console.log(res)
@@ -38,8 +36,7 @@
             });
         },
         choose(e){
-            console.log(e)
-            web.val = e;
+            web.current = e;
             this.$router.push({ path: '/table' });
         }
     },

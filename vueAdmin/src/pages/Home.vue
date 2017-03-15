@@ -2,7 +2,7 @@
 	<el-row class="container">
 		<el-col :span="24" class="header">
 			<el-col :span="20" class="logo">
-				<img src="../assets/logo4.png" /> <span>开撸了<i class="txt">后台管理系统</i></span>{{web}}
+				<img src="../assets/logo4.png" /> <span>{{web.current.name}}<i class="txt">后台管理系统</i></span>
 			</el-col>
 			<el-col :span="4" class="userinfo">
 				<el-dropdown trigger="click">
@@ -56,7 +56,7 @@
 			return {
 				sysUserName: '',
 				sysUserAvatar: '',
-				web: web.val,
+				web: web,
 				form: {
 					name: '',
 					region: '',

@@ -1,19 +1,35 @@
 import axios from 'axios';
 import Vue from 'vue'
+import {web} from '../data.js'
+import config from '../config'
 
-let baseUrl = 'http://localhost:3000/';
-let base = '';
-export function postRequest(data){
+
+function request (type,data){
+    if(data.www){
+        var requestUrl = config.wwwUrl + data.url;
+    }else{
+        console.log(web.current.path);
+        var requestUrl = config.baseUrl(data.url);
+    }
     return new Promise(function(resolve,reject){
-        Vue.http.post(baseUrl + data.url, data.body).then(response => {
+        Vue.http[type](requestUrl, data.body).then(response => {
             resolve(response.data.data)
         },err => {
             console.error('网络请求错误:')
             console.log(err)
         })
     })
-    // return Vue.http.post(baseUrl + data.url, data.body)
 }
+export function postRequest(data){
+    return request('post',data)
+}
+export function getRequest(data){
+    return request('get',data)
+}
+
+let base = '';
+
+
 export const webList = params => { return axios.get(`${base}/web/list`, { params: params }); };
 
 export const requestLogin = params => { return axios.post(`${base}/login`, params).then(res => res.data); };

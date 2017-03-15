@@ -3,8 +3,9 @@ var router = express.Router();
 var web = require('../dbModel/web');
 
 
-router.post('/list',function(req,res,next){
-    web().find().exec(function(err,result){
+router.get('/list',function(req,res,next){
+    var webType = req.headers.host.split('.')[0];
+    web(webType).find().exec(function(err,result){
         if(!err){
             res.json({
                 status: 'ok',
@@ -19,8 +20,8 @@ router.post('/list',function(req,res,next){
     })
 })
 router.post('/add',function(req,res,next){
-    console.log(req.body);
-    web().create(req.body, function (err, result) {
+    var webType = req.headers.host;
+    web(webType).create(req.body, function (err, result) {
         if (err) {
             res.json({
                 status: 'fail',
