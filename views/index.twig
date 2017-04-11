@@ -3,4 +3,9 @@
 {% block body %}
   <h1>{{title}}</h1>
   <p>Welcome to {{title}}</p>
+  <ul>
+    {% for item in detail %}
+            <li>标题:{{ item.title }}</li>
+    {% endfor %}
+  </ul>
 {% endblock %}
