@@ -20,6 +20,7 @@ router.get('/',function(req,res,next){
             res.render('index', {title: webType.split('.')[0],  detail: result});
         }
     })
+
 })
 
 module.exports = router;

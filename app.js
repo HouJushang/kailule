@@ -10,6 +10,8 @@ var users = require('./routes/users');
 var web = require('./routes/web');
 var article = require('./routes/article');
 var friendLink = require('./routes/friendLink')
+var seo = require('./routes/seo')
+
 
 var app = express();
 
@@ -23,7 +25,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(require('node-compass')({mode: 'expanded'}));
+// app.use(require('node-compass')({mode: 'expanded'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
@@ -31,6 +33,8 @@ app.use('/web', web);
 app.use('/users', users);
 app.use('/article', article);
 app.use('/friendlink', friendLink)
+app.use('/seo', seo)
+
 
 
 // catch 404 and forward to error handler
